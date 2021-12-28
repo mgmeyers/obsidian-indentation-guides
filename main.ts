@@ -11,15 +11,15 @@ import { StateField } from "@codemirror/state";
 import { RangeSetBuilder } from "@codemirror/rangeset";
 import { Line } from "@codemirror/text";
 
-interface RelationshipLinesSettings {
+interface Settings {
   showActiveIndentationGroup: boolean;
 }
 
-const DEFAULT_SETTINGS: RelationshipLinesSettings = {
+const DEFAULT_SETTINGS: Settings = {
   showActiveIndentationGroup: true,
 };
 
-const tabDecoration = (getSettings: () => RelationshipLinesSettings) =>
+const tabDecoration = (getSettings: () => Settings) =>
   ViewPlugin.fromClass(
     class {
       decorator: MatchDecorator;
@@ -161,12 +161,14 @@ const activeIndentField = StateField.define<number>({
   },
 });
 
-export default class RelationshipLines extends Plugin {
-  settings: RelationshipLinesSettings;
+export default class IndentationGuidesPlugin extends Plugin {
+  settings: Settings;
 
   async onload() {
     await this.loadSettings();
-    this.addSettingTab(new RelationshipLinesSettingsTab(this.app, this));
+
+    this.addSettingTab(new SettingsTab(this.app, this));
+
     this.registerEditorExtension([
       activeIndentField,
       indentationGroup,
@@ -183,10 +185,10 @@ export default class RelationshipLines extends Plugin {
   }
 }
 
-class RelationshipLinesSettingsTab extends PluginSettingTab {
-  plugin: RelationshipLines;
+class SettingsTab extends PluginSettingTab {
+  plugin: IndentationGuidesPlugin;
 
-  constructor(app: App, plugin: RelationshipLines) {
+  constructor(app: App, plugin: IndentationGuidesPlugin) {
     super(app, plugin);
     this.plugin = plugin;
   }
