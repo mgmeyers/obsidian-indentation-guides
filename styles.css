@@ -1,4 +1,36 @@
-/* Sets all the text color to red! */
-body {
-    color: red;
+.HyperMD-codeblock,
+.cm-line[style*="text-indent"] {
+  position: relative;
+}
+
+.HyperMD-codeblock .cm-tab::before,
+.cm-line[style*="text-indent"] .cm-tab::before {
+  content: " ";
+  display: block;
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.07);
+  font-size: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.HyperMD-codeblock.cm-indent-group .cm-tab.cm-indent-group-level::before,
+.cm-line[style*="text-indent"].cm-indent-group
+  .cm-tab.cm-indent-group-level::before {
+  background-color: rgba(0, 0, 0, 0.17);
+}
+
+.theme-dark .HyperMD-codeblock .cm-tab::before,
+.theme-dark .cm-line[style*="text-indent"] .cm-tab::before {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.theme-dark
+  .HyperMD-codeblock.cm-indent-group
+  .cm-tab.cm-indent-group-level::before,
+.theme-dark
+  .cm-line[style*="text-indent"].cm-indent-group
+  .cm-tab.cm-indent-group-level::before {
+  background-color: rgba(255, 255, 255, 0.17);
 }

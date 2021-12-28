@@ -1,10 +1,10 @@
 {
-	"id": "obsidian-sample-plugin",
-	"name": "Sample Plugin",
-	"version": "1.0.1",
-	"minAppVersion": "0.12.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"isDesktopOnly": false
+	"id": "obsidian-indentation-guides",
+	"name": "Editor Indentation Guides",
+	"version": "1.0.0",
+	"minAppVersion": "0.13.8",
+	"description": "Adds vertical lines to the editor denoting indentation level of lists and other indented content.",
+	"author": "mgmeyers",
+	"authorUrl": "https://github.com/mgmeyers/obsidian-indentation-guides",
+	"isDesktopOnly": true
 }
