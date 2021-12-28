@@ -11,16 +11,20 @@ import { StateField } from "@codemirror/state";
 import { RangeSetBuilder } from "@codemirror/rangeset";
 import { Line } from "@codemirror/text";
 
-interface Settings {
-  showActiveIndentationGroup: boolean;
+const indentationGroupDecoration = Decoration.line({
+  attributes: { class: "cm-indent-group" },
+});
+
+function getLineIndent(tabSize: number, line: Line) {
+  const match = line.text.match(new RegExp(`^((?:\t| {${tabSize}})+)`));
+
+  if (!match) return 0;
+
+  return match[1].split(new RegExp(`(?:\t| {${tabSize}})`)).length - 1;
 }
 
-const DEFAULT_SETTINGS: Settings = {
-  showActiveIndentationGroup: true,
-};
-
-const tabDecoration = (getSettings: () => Settings) =>
-  ViewPlugin.fromClass(
+const tabDecoration = (getSettings: () => Settings) => {
+  return ViewPlugin.fromClass(
     class {
       decorator: MatchDecorator;
       decorations: DecorationSet = Decoration.none;
@@ -57,6 +61,8 @@ const tabDecoration = (getSettings: () => Settings) =>
             this.decorations
           );
         } else {
+          // It seems we have to recreate the decorations with each update or else
+          // cm-indent-group-level won't be applied. Is there some way to work around this?
           this.decorations = this.decorator.createDeco(update.view);
         }
       }
@@ -65,18 +71,7 @@ const tabDecoration = (getSettings: () => Settings) =>
       decorations: (v) => v.decorations,
     }
   );
-
-function getLineIndent(tabSize: number, line: Line) {
-  const match = line.text.match(new RegExp(`^((?:\t| {${tabSize}})+)`));
-
-  if (!match) return 0;
-
-  return match[1].split(new RegExp(`(?:\t| {${tabSize}})`)).length - 1;
-}
-
-const indentationGroupDecoration = Decoration.line({
-  attributes: { class: "cm-indent-group" },
-});
+};
 
 function tagIndentationGroup(view: EditorView) {
   const builder = new RangeSetBuilder<Decoration>();
@@ -136,6 +131,7 @@ const indentationGroup = ViewPlugin.fromClass(
     }
 
     update(update: ViewUpdate) {
+      // Can we prevent any unnecessary work here?
       this.decorations = tagIndentationGroup(update.view);
     }
   },
@@ -153,6 +149,7 @@ const activeIndentField = StateField.define<number>({
     );
   },
   update(_, tr) {
+    // Can we prevent any unnecessary work here?
     const state = tr.state;
     return getLineIndent(
       state.tabSize,
@@ -160,6 +157,14 @@ const activeIndentField = StateField.define<number>({
     );
   },
 });
+
+interface Settings {
+  showActiveIndentationGroup: boolean;
+}
+
+const DEFAULT_SETTINGS: Settings = {
+  showActiveIndentationGroup: true,
+};
 
 export default class IndentationGuidesPlugin extends Plugin {
   settings: Settings;
