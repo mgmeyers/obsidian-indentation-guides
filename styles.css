@@ -1,10 +1,14 @@
-.HyperMD-codeblock,
-.cm-line[style*="text-indent"] {
+.ig-code .HyperMD-codeblock,
+.ig-lists .HyperMD-list-line,
+.ig-uncategorized .cm-line[style*="text-indent"]:not(.HyperMD-list-line) {
   position: relative;
 }
 
-.HyperMD-codeblock .cm-tab::before,
-.cm-line[style*="text-indent"] .cm-tab::before {
+.ig-code .HyperMD-codeblock .cm-tab::before,
+.ig-lists .HyperMD-list-line .cm-tab::before,
+.ig-uncategorized
+  .cm-line[style*="text-indent"]:not(.HyperMD-list-line)
+  .cm-tab::before {
   content: " ";
   display: block;
   width: 1px;
@@ -15,22 +19,34 @@
   bottom: 0;
 }
 
-.HyperMD-codeblock.cm-indent-group .cm-tab.cm-indent-group-level::before,
-.cm-line[style*="text-indent"].cm-indent-group
+.ig-code
+  .HyperMD-codeblock.cm-indent-group
+  .cm-tab.cm-indent-group-level::before,
+.ig-lists
+  .HyperMD-list-line.cm-indent-group
+  .cm-tab.cm-indent-group-level::before,
+.ig-uncategorized
+  .cm-line[style*="text-indent"].cm-indent-group:not(.HyperMD-list-line)
   .cm-tab.cm-indent-group-level::before {
   background-color: rgba(0, 0, 0, 0.17);
 }
 
-.theme-dark .HyperMD-codeblock .cm-tab::before,
-.theme-dark .cm-line[style*="text-indent"] .cm-tab::before {
+.theme-dark.ig-code .HyperMD-codeblock .cm-tab::before,
+.theme-dark.ig-lists .HyperMD-list-line .cm-tab::before,
+.theme-dark.ig-uncategorized
+  .cm-line[style*="text-indent"]:not(.HyperMD-list-line)
+  .cm-tab::before {
   background-color: rgba(255, 255, 255, 0.07);
 }
 
-.theme-dark
+.theme-dark.ig-lists
+  .HyperMD-list-line.cm-indent-group
+  .cm-tab.cm-indent-group-level::before,
+.theme-dark.ig-code
   .HyperMD-codeblock.cm-indent-group
   .cm-tab.cm-indent-group-level::before,
-.theme-dark
-  .cm-line[style*="text-indent"].cm-indent-group
+.theme-dark.ig-uncategorized
+  .cm-line[style*="text-indent"].cm-indent-group:not(.HyperMD-list-line)
   .cm-tab.cm-indent-group-level::before {
   background-color: rgba(255, 255, 255, 0.17);
 }
