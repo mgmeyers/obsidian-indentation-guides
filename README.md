@@ -8,6 +8,10 @@ This plugin adds intentation guides, aka relationship lines, to the obsidian edi
 
 This plugin can be installed using the Beta Reviewer's Auto-update Tool (BRAT) which can be installed from the community plugin list. With BRAT installed and active, you can install Indentation Guides by adding `mgmeyers/obsidian-indentation-guides` as a beta plugin.
 
+## Styling
+
+Indentation guides are styled with relatively simple CSS, and can be overriden by themes and CSS snippets. See [styles.css](styles.css) for relevant classes.
+
 ## Support
 
 If you find this plugin useful, consider supporting its development:

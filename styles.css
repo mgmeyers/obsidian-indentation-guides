@@ -1,11 +1,21 @@
-.ig-code .HyperMD-codeblock,
+/* Lists */
 .ig-lists .HyperMD-list-line,
+
+/* Code */
+.ig-code .HyperMD-codeblock,
+
+/* Uncategorized */
 .ig-uncategorized .cm-line[style*="text-indent"]:not(.HyperMD-list-line) {
   position: relative;
 }
 
-.ig-code .HyperMD-codeblock .cm-tab::before,
+/* Lists */
 .ig-lists .HyperMD-list-line .cm-tab::before,
+
+/* Code */
+.ig-code .HyperMD-codeblock .cm-tab::before,
+
+/* Uncategorized */
 .ig-uncategorized
   .cm-line[style*="text-indent"]:not(.HyperMD-list-line)
   .cm-tab::before {
@@ -19,32 +29,47 @@
   bottom: 0;
 }
 
-.ig-code
-  .HyperMD-codeblock.cm-indent-group
-  .cm-tab.cm-indent-group-level::before,
+/* Lists */
 .ig-lists
   .HyperMD-list-line.cm-indent-group
   .cm-tab.cm-indent-group-level::before,
+  
+/* Code */
+.ig-code
+  .HyperMD-codeblock.cm-indent-group
+  .cm-tab.cm-indent-group-level::before,
+  
+/* Uncategorized */
 .ig-uncategorized
   .cm-line[style*="text-indent"].cm-indent-group:not(.HyperMD-list-line)
   .cm-tab.cm-indent-group-level::before {
   background-color: rgba(0, 0, 0, 0.17);
 }
 
-.theme-dark.ig-code .HyperMD-codeblock .cm-tab::before,
+/* Lists */
 .theme-dark.ig-lists .HyperMD-list-line .cm-tab::before,
+
+/* Code */
+.theme-dark.ig-code .HyperMD-codeblock .cm-tab::before,
+
+/* Uncategorized */
 .theme-dark.ig-uncategorized
   .cm-line[style*="text-indent"]:not(.HyperMD-list-line)
   .cm-tab::before {
   background-color: rgba(255, 255, 255, 0.07);
 }
 
+/* Lists */
 .theme-dark.ig-lists
   .HyperMD-list-line.cm-indent-group
   .cm-tab.cm-indent-group-level::before,
+
+/* Code */
 .theme-dark.ig-code
   .HyperMD-codeblock.cm-indent-group
   .cm-tab.cm-indent-group-level::before,
+  
+/* Uncategorized */
 .theme-dark.ig-uncategorized
   .cm-line[style*="text-indent"].cm-indent-group:not(.HyperMD-list-line)
   .cm-tab.cm-indent-group-level::before {
