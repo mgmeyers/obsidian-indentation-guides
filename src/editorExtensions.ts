@@ -10,14 +10,19 @@ import { StateField } from "@codemirror/state";
 import { RangeSetBuilder } from "@codemirror/rangeset";
 import { Line } from "@codemirror/text";
 import { Settings } from "./settings";
+import { getLineIndent } from "./helpers";
 
-function getLineIndent(line: Line) {
-  const match = line.text.match(/^((?:\t| {4})+)/);
+const tabMark = Decoration.mark({
+  class: "ig-tab",
+});
 
-  if (!match) return 0;
+const indentGroupMark = Decoration.mark({
+  class: "ig-tab ig-indent-group-level",
+});
 
-  return match[1].split(/(?:\t| {4})/).length - 1;
-}
+const indentationGroupDecoration = Decoration.line({
+  attributes: { class: "ig-indent-group" },
+});
 
 export const activeIndentField = StateField.define<number>({
   create(state) {
@@ -42,20 +47,15 @@ export const tabDecoration = (getSettings: () => Settings) => {
           regexp: new RegExp(/(?:\t| {4})/g),
           decoration: (match, view) => {
             if (!getSettings().showActiveIndentationGroup) {
-              return Decoration.mark({
-                class: `cm-tab`,
-              });
+              return tabMark;
             }
 
             const currentIndent = view.state.field(activeIndentField);
+            const thisIndent = (match.index / match[0].length) + 1
 
-            return Decoration.mark({
-              class: `cm-tab${
-                currentIndent - 1 === match.index / match[0].length
-                  ? " cm-indent-group-level"
-                  : ""
-              }`,
-            });
+            return thisIndent === currentIndent
+              ? indentGroupMark
+              : tabMark;
           },
         });
 
@@ -80,10 +80,6 @@ export const tabDecoration = (getSettings: () => Settings) => {
     }
   );
 };
-
-const indentationGroupDecoration = Decoration.line({
-  attributes: { class: "cm-indent-group" },
-});
 
 function tagIndentationGroup(view: EditorView) {
   const builder = new RangeSetBuilder<Decoration>();

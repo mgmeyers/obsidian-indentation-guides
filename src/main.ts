@@ -37,7 +37,7 @@ export default class IndentationGuidesPlugin extends Plugin {
     this.toggleClass("ig-uncategorized", this.settings.uncatagorizedIndents);
   }
 
-  unload() {
+  onunload() {
     document.body.removeClasses(["ig-lists", "ig-code", "ig-uncategorized"]);
   }
 
