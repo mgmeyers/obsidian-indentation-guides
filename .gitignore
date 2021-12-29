@@ -19,3 +19,4 @@ main.js
 # obsidian
 data.json
 .hotreload
+.DS_Store
