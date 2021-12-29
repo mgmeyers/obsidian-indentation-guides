@@ -2,7 +2,7 @@
 
 This plugin adds intentation guides, aka relationship lines, to the obsidian editor.
 
-<img src="https://raw.githubusercontent.com/mgmeyers/obsidian-indentation-guides/main/screenshots/example.gif" alt="A short gif demonstraiting visual indentation guides">
+<img src="https://raw.githubusercontent.com/mgmeyers/obsidian-indentation-guides/main/example.gif" alt="A short gif demonstraiting visual indentation guides">
 
 ## Installation
 
