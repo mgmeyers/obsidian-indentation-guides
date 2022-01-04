@@ -1,3 +1,28 @@
+/* @settings
+
+name: Indentation Guides
+id: obsidian-indentation-guides
+settings:
+    - 
+        id: indentation-guide-color
+        title: Indentation Guide (inactive)
+        type: variable-themed-color
+        format: rgb
+        opacity: true
+        default-light: 'rgba(0, 0, 0, 0.06)'
+        default-dark: 'rgba(255, 255, 255, 0.08)'
+    - 
+        id: indentation-guide-active-color
+        title: Indentation Guide (active)
+        type: variable-themed-color
+        format: rgb
+        opacity: true
+        default-light: 'rgba(0, 0, 0, 0.14)'
+        default-dark: 'rgba(255, 255, 255, 0.17)'
+
+*/
+
+
 .theme-light {
   --indentation-guide-color: rgba(0, 0, 0, 0.06);
   --indentation-guide-active-color: rgba(0, 0, 0, 0.14);
