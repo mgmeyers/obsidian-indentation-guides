@@ -4,8 +4,17 @@ name: Indentation Guides
 id: obsidian-indentation-guides
 settings:
     - 
+        id: indentation-guide-adjust
+        title: Adjust guide horizontal position
+        type: variable-number-slider
+        default: 0
+        min: -10
+        max: 10
+        step: 1
+        format: px
+    - 
         id: indentation-guide-color
-        title: Indentation Guide (inactive)
+        title: Inactive indentation guide color
         type: variable-themed-color
         format: rgb
         opacity: true
@@ -13,7 +22,7 @@ settings:
         default-dark: 'rgba(255, 255, 255, 0.08)'
     - 
         id: indentation-guide-active-color
-        title: Indentation Guide (active)
+        title: Active indentation guide color
         type: variable-themed-color
         format: rgb
         opacity: true
@@ -22,6 +31,9 @@ settings:
 
 */
 
+:root {
+  --indentation-guide-adjust: 0px;
+}
 
 .theme-light {
   --indentation-guide-color: rgba(0, 0, 0, 0.06);
@@ -63,6 +75,7 @@ settings:
   position: absolute;
   top: 0;
   bottom: 0;
+  transform: translateX(var(--indentation-guide-adjust));
 }
 
 /* Lists */
