@@ -13,6 +13,15 @@ settings:
         step: 1
         format: px
     - 
+        id: indentation-guide-adjust-preview
+        title: Adjust guide horizontal position (reading mode)
+        type: variable-number-slider
+        default: 0
+        min: -10
+        max: 10
+        step: 1
+        format: px
+    - 
         id: indentation-guide-color
         title: Inactive indentation guide color
         type: variable-themed-color
@@ -33,6 +42,7 @@ settings:
 
 :root {
   --indentation-guide-adjust: 0px;
+  --indentation-guide-adjust-preview: 0px;
 }
 
 .theme-light {
@@ -104,4 +114,17 @@ settings:
 
 .ig-lists.outliner-plugin-vertical-lines .cm-line .cm-hmd-list-indent::before {
   content: none;
+}
+
+/* Preview lists */
+.ig-lists-preview .markdown-preview-view li ul,
+.ig-lists-preview .markdown-preview-view li ol {
+  box-shadow: calc(-1em + 1px + var(--indentation-guide-adjust-preview)) 0 0 -1px
+      var(--background-primary),
+    calc(-1em + var(--indentation-guide-adjust-preview)) 0 0 -1px var(--indentation-guide-color);
+}
+
+.ig-lists-preview .markdown-preview-view .list-collapse-indicator {
+  margin-left: -40px;
+  margin-top: -1px;
 }

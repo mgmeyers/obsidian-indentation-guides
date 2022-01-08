@@ -19,6 +19,8 @@ export default class IndentationGuidesPlugin extends Plugin {
       indentationGroup,
       tabDecoration(() => this.settings),
     ]);
+
+    this.app.workspace.trigger("parse-style-settings");
   }
 
   async loadSettings() {
@@ -33,6 +35,7 @@ export default class IndentationGuidesPlugin extends Plugin {
 
   applyClasses() {
     this.toggleClass("ig-lists", this.settings.lists);
+    this.toggleClass("ig-lists-preview", this.settings.previewLists);
     this.toggleClass("ig-code", this.settings.code);
     this.toggleClass("ig-uncategorized", this.settings.uncatagorizedIndents);
   }
@@ -42,10 +45,6 @@ export default class IndentationGuidesPlugin extends Plugin {
   }
 
   toggleClass(className: string, on: boolean) {
-    if (on) {
-      document.body.addClass(className);
-    } else {
-      document.body.removeClass(className);
-    }
+    document.body.toggleClass(className, on);
   }
 }
