@@ -128,3 +128,11 @@ settings:
   margin-left: -40px;
   margin-top: -1px;
 }
+
+.ig-lists-preview
+  .markdown-preview-view
+  .task-list-item
+  .list-collapse-indicator {
+  margin-left: -45px;
+  margin-top: -1px;
+}
