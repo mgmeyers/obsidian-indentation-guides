@@ -12,6 +12,10 @@ This plugin can be installed using the Beta Reviewer's Auto-update Tool (BRAT) w
 
 Indentation guides are styled with relatively simple CSS, and can be overriden by themes and CSS snippets. See [styles.css](styles.css) for relevant classes.
 
+Alternatively, you can use [style setting plugin](https://github.com/mgmeyers/obsidian-style-settings) to ajust horizontal positon (in reading and editing view) and to customize the color (when active and inactive).
+
+<img src="https://user-images.githubusercontent.com/38974541/151538550-e497c2f1-108e-41c8-8346-54aacb944653.png" width="400"/>
+
 ## Support
 
 If you find this plugin useful, consider supporting its development:
