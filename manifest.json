@@ -1,10 +1,10 @@
 {
 	"id": "obsidian-indentation-guides",
 	"name": "Indentation Guides",
-	"version": "1.0.6",
-	"minAppVersion": "0.13.14",
+	"version": "1.0.7",
+	"minAppVersion": "0.13.30",
 	"description": "Adds vertical lines to the editor denoting indentation level of lists and other content.",
 	"author": "mgmeyers",
 	"authorUrl": "https://github.com/mgmeyers/obsidian-indentation-guides",
-	"isDesktopOnly": true
+	"isDesktopOnly": false
 }
